@@ -1,5 +1,9 @@
 import http from 'http';
 import websocket from 'websocket'
+import express from 'express'
+const app = express();
+app.get("/", (req,res)=> res.sendFile(__dirname, "/index.html"))
+app.listen(9091, () => console.log("Listening.. on 9091"))
 const httpServer = http.createServer();
 httpServer.listen(9090, () => console.log("Listening.. on 9090"))
 
