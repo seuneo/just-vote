@@ -14,11 +14,17 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script>
+        let  clientId = null;
         let ws = new WebSocket("ws://localhost:9090")
         ws.onmessage = message => {
             //message.data
             const response = JSON.parse(message.data);
             console.log(response)
+
+            if(response.method === "connect"){
+              clientId = response.clientId;
+              console.log("Client id set successfully" + clientId)
+            }
         }
 
     </script>
